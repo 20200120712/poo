@@ -1,5 +1,5 @@
 Link para acesso ao código:
-https://zapp.run/edit/flutter-zc4606gqd470?entry=lib/main.dart&file=lib/main.dart
+https://zapp.run/edit/receita-3-zc4606gqd470
 
 Exercícios
 1-O mesmo procedimento que foi feito com o DataBodyWidget, faça-o com o NewNavBar. Ele deve receber uma lista de ícones e montar a barra com eles (não se preocupe com os labels dos itens da barra, por enquanto)
