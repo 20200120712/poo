@@ -1,6 +1,9 @@
-Exercícios
-1-O mesmo procedimento que foi feito com o DataBodyWidget, faça-o com o NewNavBar. Ele deve receber uma lista de ícones e montar a barra com eles (não se preocupe com os labels dos itens da barra, por enquanto)
+Link para acesso ao cÃ³digo:
+https://zapp.run/edit/flutter-zc4606gqd470?entry=lib/main.dart&file=lib/main.dart
 
-2-Acrescente um menu daqueles de 3 botões verticais no appBar. As opções do menu devem ser cores. Futuramente, mudaremos a cor do tema com esse menu. Por enquanto, apenas monte a interface.
+ExercÃ­cios
+1-O mesmo procedimento que foi feito com o DataBodyWidget, faÃ§a-o com o NewNavBar. Ele deve receber uma lista de Ã­cones e montar a barra com eles (nÃ£o se preocupe com os labels dos itens da barra, por enquanto)
 
-3-Se o appBar ficar grande demais, mova-o para uma classe sua. Você pode ter que estender o próprio AppBar em vez do StatelessWidget. Desenrole.
+2-Acrescente um menu daqueles de 3 botÃµes verticais no appBar. As opÃ§Ãµes do menu devem ser cores. Futuramente, mudaremos a cor do tema com esse menu. Por enquanto, apenas monte a interface.
+
+3-Se o appBar ficar grande demais, mova-o para uma classe sua. VocÃª pode ter que estender o prÃ³prio AppBar em vez do StatelessWidget. Desenrole.
