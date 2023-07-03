@@ -107,7 +107,7 @@ class DataService {
     final ordenador = Ordenador();
     if (tableStateNotifier.value['itemType'] == ItemType.beer) {
       tableStateNotifier.value['dataObjects'] =
-          ordenador.ordenarFuderoso(items, DecididorCervejaNomeCrescente());
+          ordenador.ordenarListagem(items, DecididorCervejaNomeCrescente());
     }
     // Adicione outras chamadas de ordenação aqui, se necessário.
   }

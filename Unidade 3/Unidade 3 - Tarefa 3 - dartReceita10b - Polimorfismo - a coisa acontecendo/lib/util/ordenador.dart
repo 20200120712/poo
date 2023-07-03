@@ -1,5 +1,5 @@
 class Ordenador {
-  List ordenarFuderoso(List objetos, Decididor decididor) {
+  List ordenarListagem(List objetos, Decididor decididor) {
     List objetosOrdenados = List.of(objetos);
     bool trocouAoMenosUm;
 
