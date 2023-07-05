@@ -79,34 +79,69 @@ class NewNavBar extends HookWidget {
 }
 
 void _empty(String,bool){}
-class DataTableWidget extends StatelessWidget {
+class DataTableWidget extends StatefulWidget {
   final _sortCallback;
   final List jsonObjects;
   final List<String> columnNames;
   final List<String> propertyNames;
-  DataTableWidget(
-      {this.jsonObjects = const [],
-      this.columnNames = const [],
-      this.propertyNames = const [],
-      sortCallback})
-      : _sortCallback = sortCallback ?? _empty ;
+
+  DataTableWidget({
+    this.jsonObjects = const [],
+    this.columnNames = const [],
+    this.propertyNames = const [],
+    sortCallback,
+  }) : _sortCallback = sortCallback ?? _empty;
+
+  @override
+  _DataTableWidgetState createState() => _DataTableWidgetState();
+}
+
+class _DataTableWidgetState extends State<DataTableWidget> {
+  int? _sortedColumnIndex;
+  bool _isAscending = true;
 
   @override
   Widget build(BuildContext context) {
     return DataTable(
-        columns: columnNames
-            .map((name) => DataColumn(
-                onSort: (columnIndex, ascending) =>
-                    _sortCallback(propertyNames[columnIndex],ascending),
-                label: Expanded(
-                    child: Text(name,
-                        style: const TextStyle(fontStyle: FontStyle.italic)))))
-            .toList(),
-        rows: jsonObjects
-            .map((obj) => DataRow(
-                cells: propertyNames
-                    .map((propName) => DataCell(Text('${obj[propName]}')))
-                    .toList()))
-            .toList());
+      columns: widget.columnNames
+          .asMap()
+          .map((columnIndex, name) => MapEntry(
+                columnIndex,
+                DataColumn(
+                  onSort: (columnIndex, ascending) {
+                    bool isAscending = columnIndex == _sortedColumnIndex ? !_isAscending : true;
+                    setState(() {
+                      _sortedColumnIndex = columnIndex;
+                      _isAscending = isAscending;
+                    });
+                    widget._sortCallback(widget.propertyNames[columnIndex], isAscending);
+                  },
+                  label: Row(
+                    children: [
+                      Text(
+                        name,
+                        style: const TextStyle(fontStyle: FontStyle.italic),
+                      ),
+                      if (_sortedColumnIndex == columnIndex)
+                        Icon(
+                          _isAscending ? Icons.arrow_upward : Icons.arrow_downward,
+                          size: 16,
+                        ),
+                    ],
+                  ),
+                ),
+              ))
+          .values
+          .toList(),
+      rows: widget.jsonObjects
+          .map(
+            (obj) => DataRow(
+              cells: widget.propertyNames
+                  .map((propName) => DataCell(Text('${obj[propName]}')))
+                  .toList(),
+            ),
+          )
+          .toList(),
+    );
   }
 }
